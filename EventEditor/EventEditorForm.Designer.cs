@@ -32,10 +32,11 @@
 			statusStrip1 = new StatusStrip();
 			toolStripEventName = new ToolStripStatusLabel();
 			toolStrip1 = new ToolStrip();
+			toolStripButton1 = new ToolStripButton();
+			toolStripButton2 = new ToolStripButton();
 			splitContainer1 = new SplitContainer();
 			tableLayoutPanel2 = new TableLayoutPanel();
 			splitContainer2 = new SplitContainer();
-			pictureBox = new PictureBox();
 			splitContainer3 = new SplitContainer();
 			tableLayoutPanel3 = new TableLayoutPanel();
 			label2 = new Label();
@@ -52,15 +53,15 @@
 			textBox1 = new TextBox();
 			menuStrip1 = new MenuStrip();
 			файлToolStripMenuItem = new ToolStripMenuItem();
-			справкаToolStripMenuItem = new ToolStripMenuItem();
-			оПрограммеToolStripMenuItem = new ToolStripMenuItem();
 			добавитьЗаметкуToolStripMenuItem = new ToolStripMenuItem();
 			удалитьЗаметкуToolStripMenuItem = new ToolStripMenuItem();
 			удалитьЗаметкуToolStripMenuItem1 = new ToolStripMenuItem();
 			сохранитьToolStripMenuItem = new ToolStripMenuItem();
 			выходToolStripMenuItem = new ToolStripMenuItem();
-			toolStripButton1 = new ToolStripButton();
-			toolStripButton2 = new ToolStripButton();
+			справкаToolStripMenuItem = new ToolStripMenuItem();
+			оПрограммеToolStripMenuItem = new ToolStripMenuItem();
+			panelImage = new Panel();
+			pictureBox = new PictureBox();
 			statusStrip1.SuspendLayout();
 			toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -72,7 +73,6 @@
 			splitContainer2.Panel1.SuspendLayout();
 			splitContainer2.Panel2.SuspendLayout();
 			splitContainer2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 			((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
 			splitContainer3.Panel1.SuspendLayout();
 			splitContainer3.Panel2.SuspendLayout();
@@ -81,6 +81,8 @@
 			tableLayoutPanel4.SuspendLayout();
 			tableLayoutPanel1.SuspendLayout();
 			menuStrip1.SuspendLayout();
+			panelImage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 			SuspendLayout();
 			// 
 			// statusStrip1
@@ -107,6 +109,24 @@
 			toolStrip1.Size = new Size(866, 25);
 			toolStrip1.TabIndex = 1;
 			toolStrip1.Text = "toolStrip1";
+			// 
+			// toolStripButton1
+			// 
+			toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+			toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+			toolStripButton1.ImageTransparentColor = Color.Magenta;
+			toolStripButton1.Name = "toolStripButton1";
+			toolStripButton1.Size = new Size(23, 22);
+			toolStripButton1.Text = "toolStripButton1";
+			// 
+			// toolStripButton2
+			// 
+			toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
+			toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
+			toolStripButton2.ImageTransparentColor = Color.Magenta;
+			toolStripButton2.Name = "toolStripButton2";
+			toolStripButton2.Size = new Size(23, 22);
+			toolStripButton2.Text = "toolStripButton2";
 			// 
 			// splitContainer1
 			// 
@@ -154,7 +174,7 @@
 			// 
 			// splitContainer2.Panel1
 			// 
-			splitContainer2.Panel1.Controls.Add(pictureBox);
+			splitContainer2.Panel1.Controls.Add(panelImage);
 			// 
 			// splitContainer2.Panel2
 			// 
@@ -162,15 +182,6 @@
 			splitContainer2.Size = new Size(858, 332);
 			splitContainer2.SplitterDistance = 587;
 			splitContainer2.TabIndex = 0;
-			// 
-			// pictureBox
-			// 
-			pictureBox.Dock = DockStyle.Fill;
-			pictureBox.Location = new Point(0, 0);
-			pictureBox.Name = "pictureBox";
-			pictureBox.Size = new Size(585, 330);
-			pictureBox.TabIndex = 0;
-			pictureBox.TabStop = false;
 			// 
 			// splitContainer3
 			// 
@@ -227,6 +238,7 @@
 			listCamera.Name = "listCamera";
 			listCamera.Size = new Size(259, 123);
 			listCamera.TabIndex = 1;
+			listCamera.SelectedIndexChanged += listCamera_SelectedIndexChanged;
 			// 
 			// tableLayoutPanel4
 			// 
@@ -335,23 +347,10 @@
 			файлToolStripMenuItem.Size = new Size(48, 20);
 			файлToolStripMenuItem.Text = "Файл";
 			// 
-			// справкаToolStripMenuItem
-			// 
-			справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { оПрограммеToolStripMenuItem });
-			справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-			справкаToolStripMenuItem.Size = new Size(65, 20);
-			справкаToolStripMenuItem.Text = "Справка";
-			// 
-			// оПрограммеToolStripMenuItem
-			// 
-			оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-			оПрограммеToolStripMenuItem.Size = new Size(149, 22);
-			оПрограммеToolStripMenuItem.Text = "О программе";
-			// 
 			// добавитьЗаметкуToolStripMenuItem
 			// 
 			добавитьЗаметкуToolStripMenuItem.Name = "добавитьЗаметкуToolStripMenuItem";
-			добавитьЗаметкуToolStripMenuItem.Size = new Size(180, 22);
+			добавитьЗаметкуToolStripMenuItem.Size = new Size(200, 22);
 			добавитьЗаметкуToolStripMenuItem.Text = "Добавить заметку";
 			// 
 			// удалитьЗаметкуToolStripMenuItem
@@ -378,23 +377,36 @@
 			выходToolStripMenuItem.Size = new Size(200, 22);
 			выходToolStripMenuItem.Text = "Выход";
 			// 
-			// toolStripButton1
+			// справкаToolStripMenuItem
 			// 
-			toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-			toolStripButton1.ImageTransparentColor = Color.Magenta;
-			toolStripButton1.Name = "toolStripButton1";
-			toolStripButton1.Size = new Size(23, 22);
-			toolStripButton1.Text = "toolStripButton1";
+			справкаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { оПрограммеToolStripMenuItem });
+			справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+			справкаToolStripMenuItem.Size = new Size(65, 20);
+			справкаToolStripMenuItem.Text = "Справка";
 			// 
-			// toolStripButton2
+			// оПрограммеToolStripMenuItem
 			// 
-			toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-			toolStripButton2.ImageTransparentColor = Color.Magenta;
-			toolStripButton2.Name = "toolStripButton2";
-			toolStripButton2.Size = new Size(23, 22);
-			toolStripButton2.Text = "toolStripButton2";
+			оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+			оПрограммеToolStripMenuItem.Size = new Size(149, 22);
+			оПрограммеToolStripMenuItem.Text = "О программе";
+			// 
+			// panelImage
+			// 
+			panelImage.AutoScroll = true;
+			panelImage.Controls.Add(pictureBox);
+			panelImage.Dock = DockStyle.Fill;
+			panelImage.Location = new Point(0, 0);
+			panelImage.Name = "panelImage";
+			panelImage.Size = new Size(585, 330);
+			panelImage.TabIndex = 0;
+			// 
+			// pictureBox
+			// 
+			pictureBox.Location = new Point(3, 3);
+			pictureBox.Name = "pictureBox";
+			pictureBox.Size = new Size(579, 324);
+			pictureBox.TabIndex = 0;
+			pictureBox.TabStop = false;
 			// 
 			// EventEditorForm
 			// 
@@ -427,7 +439,6 @@
 			splitContainer2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
 			splitContainer2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 			splitContainer3.Panel1.ResumeLayout(false);
 			splitContainer3.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
@@ -440,6 +451,8 @@
 			tableLayoutPanel1.PerformLayout();
 			menuStrip1.ResumeLayout(false);
 			menuStrip1.PerformLayout();
+			panelImage.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -459,7 +472,6 @@
 		private ToolStripStatusLabel toolStripEventName;
 		private TableLayoutPanel tableLayoutPanel2;
 		private SplitContainer splitContainer2;
-		private PictureBox pictureBox;
 		private SplitContainer splitContainer3;
 		private TableLayoutPanel tableLayoutPanel3;
 		private TableLayoutPanel tableLayoutPanel4;
@@ -478,5 +490,7 @@
 		private ToolStripMenuItem выходToolStripMenuItem;
 		private ToolStripButton toolStripButton1;
 		private ToolStripButton toolStripButton2;
+		private Panel panelImage;
+		private PictureBox pictureBox;
 	}
 }

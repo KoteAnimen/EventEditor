@@ -22,5 +22,14 @@ namespace EventEditor
 		public string Description { get; set; } = "";
 		public MarkType Type { get; set; }
 		public string CameraInfo { get; set; } = "";
-	}	
+		public Rect_ROI? ROI { get; set; }
+	}
+	
+	public class Rect_ROI
+	{
+		public int X { get; set; }
+		public int Y { get; set; }
+		public int Width { get; set; }
+		public int Height { get; set; }
+	}
 }
