@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventEditorForm));
 			statusStrip1 = new StatusStrip();
 			toolStripEventName = new ToolStripStatusLabel();
@@ -37,6 +38,8 @@
 			splitContainer1 = new SplitContainer();
 			tableLayoutPanel2 = new TableLayoutPanel();
 			splitContainer2 = new SplitContainer();
+			panelImage = new Panel();
+			pictureBox = new PictureBox();
 			splitContainer3 = new SplitContainer();
 			tableLayoutPanel3 = new TableLayoutPanel();
 			label2 = new Label();
@@ -44,24 +47,25 @@
 			tableLayoutPanel4 = new TableLayoutPanel();
 			label3 = new Label();
 			listMarks = new ListView();
-			columnColor = new ColumnHeader();
 			columnName = new ColumnHeader();
 			columnShortDescription = new ColumnHeader();
 			columnDescription = new ColumnHeader();
+			cms_EditMarks = new ContextMenuStrip(components);
+			cms_AddMark = new ToolStripMenuItem();
+			cms_EditMark = new ToolStripMenuItem();
+			cms_DeleteMark = new ToolStripMenuItem();
 			tableLayoutPanel1 = new TableLayoutPanel();
 			label1 = new Label();
 			textBox1 = new TextBox();
 			menuStrip1 = new MenuStrip();
 			файлToolStripMenuItem = new ToolStripMenuItem();
-			добавитьЗаметкуToolStripMenuItem = new ToolStripMenuItem();
-			удалитьЗаметкуToolStripMenuItem = new ToolStripMenuItem();
-			удалитьЗаметкуToolStripMenuItem1 = new ToolStripMenuItem();
+			mi_AddMark = new ToolStripMenuItem();
+			mi_EditMark = new ToolStripMenuItem();
+			mi_DeleteMark = new ToolStripMenuItem();
 			сохранитьToolStripMenuItem = new ToolStripMenuItem();
 			выходToolStripMenuItem = new ToolStripMenuItem();
 			справкаToolStripMenuItem = new ToolStripMenuItem();
 			оПрограммеToolStripMenuItem = new ToolStripMenuItem();
-			panelImage = new Panel();
-			pictureBox = new PictureBox();
 			statusStrip1.SuspendLayout();
 			toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -73,16 +77,17 @@
 			splitContainer2.Panel1.SuspendLayout();
 			splitContainer2.Panel2.SuspendLayout();
 			splitContainer2.SuspendLayout();
+			panelImage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 			((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
 			splitContainer3.Panel1.SuspendLayout();
 			splitContainer3.Panel2.SuspendLayout();
 			splitContainer3.SuspendLayout();
 			tableLayoutPanel3.SuspendLayout();
 			tableLayoutPanel4.SuspendLayout();
+			cms_EditMarks.SuspendLayout();
 			tableLayoutPanel1.SuspendLayout();
 			menuStrip1.SuspendLayout();
-			panelImage.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
 			SuspendLayout();
 			// 
 			// statusStrip1
@@ -183,6 +188,24 @@
 			splitContainer2.SplitterDistance = 587;
 			splitContainer2.TabIndex = 0;
 			// 
+			// panelImage
+			// 
+			panelImage.AutoScroll = true;
+			panelImage.Controls.Add(pictureBox);
+			panelImage.Dock = DockStyle.Fill;
+			panelImage.Location = new Point(0, 0);
+			panelImage.Name = "panelImage";
+			panelImage.Size = new Size(585, 330);
+			panelImage.TabIndex = 0;
+			// 
+			// pictureBox
+			// 
+			pictureBox.Location = new Point(3, 3);
+			pictureBox.Name = "pictureBox";
+			pictureBox.Size = new Size(579, 324);
+			pictureBox.TabIndex = 0;
+			pictureBox.TabStop = false;
+			// 
 			// splitContainer3
 			// 
 			splitContainer3.BorderStyle = BorderStyle.FixedSingle;
@@ -269,7 +292,8 @@
 			// 
 			// listMarks
 			// 
-			listMarks.Columns.AddRange(new ColumnHeader[] { columnColor, columnName, columnShortDescription, columnDescription });
+			listMarks.Columns.AddRange(new ColumnHeader[] { columnName, columnShortDescription, columnDescription });
+			listMarks.ContextMenuStrip = cms_EditMarks;
 			listMarks.Dock = DockStyle.Fill;
 			listMarks.Location = new Point(3, 33);
 			listMarks.Name = "listMarks";
@@ -277,10 +301,6 @@
 			listMarks.TabIndex = 1;
 			listMarks.UseCompatibleStateImageBehavior = false;
 			listMarks.View = View.Details;
-			// 
-			// columnColor
-			// 
-			columnColor.Text = "";
 			// 
 			// columnName
 			// 
@@ -293,6 +313,34 @@
 			// columnDescription
 			// 
 			columnDescription.Text = "Описание";
+			columnDescription.Width = 100;
+			// 
+			// cms_EditMarks
+			// 
+			cms_EditMarks.Items.AddRange(new ToolStripItem[] { cms_AddMark, cms_EditMark, cms_DeleteMark });
+			cms_EditMarks.Name = "cms_EditMarks";
+			cms_EditMarks.Size = new Size(201, 70);
+			// 
+			// cms_AddMark
+			// 
+			cms_AddMark.Name = "cms_AddMark";
+			cms_AddMark.Size = new Size(200, 22);
+			cms_AddMark.Text = "Добавить заметку";
+			cms_AddMark.Click += cms_AddMark_Click;
+			// 
+			// cms_EditMark
+			// 
+			cms_EditMark.Name = "cms_EditMark";
+			cms_EditMark.Size = new Size(200, 22);
+			cms_EditMark.Text = "Редактировать заметку";
+			cms_EditMark.Click += cms_EditMark_Click;
+			// 
+			// cms_DeleteMark
+			// 
+			cms_DeleteMark.Name = "cms_DeleteMark";
+			cms_DeleteMark.Size = new Size(200, 22);
+			cms_DeleteMark.Text = "Удалить заметку";
+			cms_DeleteMark.Click += cms_DeleteMark_Click;
 			// 
 			// tableLayoutPanel1
 			// 
@@ -342,28 +390,31 @@
 			// 
 			// файлToolStripMenuItem
 			// 
-			файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { добавитьЗаметкуToolStripMenuItem, удалитьЗаметкуToolStripMenuItem, удалитьЗаметкуToolStripMenuItem1, сохранитьToolStripMenuItem, выходToolStripMenuItem });
+			файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mi_AddMark, mi_EditMark, mi_DeleteMark, сохранитьToolStripMenuItem, выходToolStripMenuItem });
 			файлToolStripMenuItem.Name = "файлToolStripMenuItem";
 			файлToolStripMenuItem.Size = new Size(48, 20);
 			файлToolStripMenuItem.Text = "Файл";
 			// 
-			// добавитьЗаметкуToolStripMenuItem
+			// mi_AddMark
 			// 
-			добавитьЗаметкуToolStripMenuItem.Name = "добавитьЗаметкуToolStripMenuItem";
-			добавитьЗаметкуToolStripMenuItem.Size = new Size(200, 22);
-			добавитьЗаметкуToolStripMenuItem.Text = "Добавить заметку";
+			mi_AddMark.Name = "mi_AddMark";
+			mi_AddMark.Size = new Size(200, 22);
+			mi_AddMark.Text = "Добавить заметку";
+			mi_AddMark.Click += mi_AddMark_Click;
 			// 
-			// удалитьЗаметкуToolStripMenuItem
+			// mi_EditMark
 			// 
-			удалитьЗаметкуToolStripMenuItem.Name = "удалитьЗаметкуToolStripMenuItem";
-			удалитьЗаметкуToolStripMenuItem.Size = new Size(200, 22);
-			удалитьЗаметкуToolStripMenuItem.Text = "Редактировать заметку";
+			mi_EditMark.Name = "mi_EditMark";
+			mi_EditMark.Size = new Size(200, 22);
+			mi_EditMark.Text = "Редактировать заметку";
+			mi_EditMark.Click += mi_EditMark_Click;
 			// 
-			// удалитьЗаметкуToolStripMenuItem1
+			// mi_DeleteMark
 			// 
-			удалитьЗаметкуToolStripMenuItem1.Name = "удалитьЗаметкуToolStripMenuItem1";
-			удалитьЗаметкуToolStripMenuItem1.Size = new Size(200, 22);
-			удалитьЗаметкуToolStripMenuItem1.Text = "Удалить заметку";
+			mi_DeleteMark.Name = "mi_DeleteMark";
+			mi_DeleteMark.Size = new Size(200, 22);
+			mi_DeleteMark.Text = "Удалить заметку";
+			mi_DeleteMark.Click += mi_DeleteMark_Click;
 			// 
 			// сохранитьToolStripMenuItem
 			// 
@@ -390,24 +441,6 @@
 			оПрограммеToolStripMenuItem.Size = new Size(149, 22);
 			оПрограммеToolStripMenuItem.Text = "О программе";
 			// 
-			// panelImage
-			// 
-			panelImage.AutoScroll = true;
-			panelImage.Controls.Add(pictureBox);
-			panelImage.Dock = DockStyle.Fill;
-			panelImage.Location = new Point(0, 0);
-			panelImage.Name = "panelImage";
-			panelImage.Size = new Size(585, 330);
-			panelImage.TabIndex = 0;
-			// 
-			// pictureBox
-			// 
-			pictureBox.Location = new Point(3, 3);
-			pictureBox.Name = "pictureBox";
-			pictureBox.Size = new Size(579, 324);
-			pictureBox.TabIndex = 0;
-			pictureBox.TabStop = false;
-			// 
 			// EventEditorForm
 			// 
 			AutoScaleDimensions = new SizeF(9F, 21F);
@@ -425,7 +458,6 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Kvantron: EventEditor";
 			WindowState = FormWindowState.Maximized;
-			Load += EventEditorForm_Load;
 			statusStrip1.ResumeLayout(false);
 			statusStrip1.PerformLayout();
 			toolStrip1.ResumeLayout(false);
@@ -439,6 +471,8 @@
 			splitContainer2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
 			splitContainer2.ResumeLayout(false);
+			panelImage.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 			splitContainer3.Panel1.ResumeLayout(false);
 			splitContainer3.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
@@ -447,12 +481,11 @@
 			tableLayoutPanel3.PerformLayout();
 			tableLayoutPanel4.ResumeLayout(false);
 			tableLayoutPanel4.PerformLayout();
+			cms_EditMarks.ResumeLayout(false);
 			tableLayoutPanel1.ResumeLayout(false);
 			tableLayoutPanel1.PerformLayout();
 			menuStrip1.ResumeLayout(false);
 			menuStrip1.PerformLayout();
-			panelImage.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -479,18 +512,21 @@
 		private Label label3;
 		private ListBox listCamera;
 		private ListView listMarks;
-		private ColumnHeader columnColor;
 		private ColumnHeader columnName;
 		private ColumnHeader columnShortDescription;
 		private ColumnHeader columnDescription;
-		private ToolStripMenuItem добавитьЗаметкуToolStripMenuItem;
-		private ToolStripMenuItem удалитьЗаметкуToolStripMenuItem;
-		private ToolStripMenuItem удалитьЗаметкуToolStripMenuItem1;
+		private ToolStripMenuItem mi_AddMark;
+		private ToolStripMenuItem mi_EditMark;
+		private ToolStripMenuItem mi_DeleteMark;
 		private ToolStripMenuItem сохранитьToolStripMenuItem;
 		private ToolStripMenuItem выходToolStripMenuItem;
 		private ToolStripButton toolStripButton1;
 		private ToolStripButton toolStripButton2;
 		private Panel panelImage;
 		private PictureBox pictureBox;
+		private ContextMenuStrip cms_EditMarks;
+		private ToolStripMenuItem cms_AddMark;
+		private ToolStripMenuItem cms_EditMark;
+		private ToolStripMenuItem cms_DeleteMark;
 	}
 }
