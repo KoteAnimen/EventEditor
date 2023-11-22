@@ -29,32 +29,32 @@
 		private void InitializeComponent()
 		{
 			tableLayoutPanel1 = new TableLayoutPanel();
+			tableLayoutPanel7 = new TableLayoutPanel();
+			label5 = new Label();
+			cmb_MarkType = new ComboBox();
 			lbl_Header = new Label();
 			tableLayoutPanel2 = new TableLayoutPanel();
 			label1 = new Label();
 			tbx_Name = new TextBox();
+			tableLayoutPanel6 = new TableLayoutPanel();
+			label4 = new Label();
+			btn_SelectColor = new Button();
 			tableLayoutPanel3 = new TableLayoutPanel();
-			label2 = new Label();
 			tbx_ShortDescription = new TextBox();
+			label2 = new Label();
 			tableLayoutPanel4 = new TableLayoutPanel();
 			label3 = new Label();
 			tbx_Description = new TextBox();
 			tableLayoutPanel5 = new TableLayoutPanel();
 			btn_Accept = new Button();
 			btn_Cancel = new Button();
-			tableLayoutPanel6 = new TableLayoutPanel();
-			tableLayoutPanel7 = new TableLayoutPanel();
-			label4 = new Label();
-			label5 = new Label();
-			btn_SelectColor = new Button();
-			cmb_MarkType = new ComboBox();
 			tableLayoutPanel1.SuspendLayout();
+			tableLayoutPanel7.SuspendLayout();
 			tableLayoutPanel2.SuspendLayout();
+			tableLayoutPanel6.SuspendLayout();
 			tableLayoutPanel3.SuspendLayout();
 			tableLayoutPanel4.SuspendLayout();
 			tableLayoutPanel5.SuspendLayout();
-			tableLayoutPanel6.SuspendLayout();
-			tableLayoutPanel7.SuspendLayout();
 			SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -81,6 +81,42 @@
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 			tableLayoutPanel1.Size = new Size(507, 577);
 			tableLayoutPanel1.TabIndex = 0;
+			// 
+			// tableLayoutPanel7
+			// 
+			tableLayoutPanel7.ColumnCount = 1;
+			tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+			tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+			tableLayoutPanel7.Controls.Add(label5, 0, 0);
+			tableLayoutPanel7.Controls.Add(cmb_MarkType, 0, 1);
+			tableLayoutPanel7.Dock = DockStyle.Fill;
+			tableLayoutPanel7.Location = new Point(3, 193);
+			tableLayoutPanel7.Name = "tableLayoutPanel7";
+			tableLayoutPanel7.RowCount = 2;
+			tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+			tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+			tableLayoutPanel7.Size = new Size(501, 64);
+			tableLayoutPanel7.TabIndex = 6;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Dock = DockStyle.Fill;
+			label5.Location = new Point(3, 0);
+			label5.Name = "label5";
+			label5.Size = new Size(495, 30);
+			label5.TabIndex = 0;
+			label5.Text = "Тип заметки:";
+			// 
+			// cmb_MarkType
+			// 
+			cmb_MarkType.Dock = DockStyle.Fill;
+			cmb_MarkType.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmb_MarkType.FormattingEnabled = true;
+			cmb_MarkType.Location = new Point(3, 33);
+			cmb_MarkType.Name = "cmb_MarkType";
+			cmb_MarkType.Size = new Size(495, 29);
+			cmb_MarkType.TabIndex = 1;
 			// 
 			// lbl_Header
 			// 
@@ -127,6 +163,44 @@
 			tbx_Name.Size = new Size(495, 29);
 			tbx_Name.TabIndex = 1;
 			// 
+			// tableLayoutPanel6
+			// 
+			tableLayoutPanel6.ColumnCount = 1;
+			tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+			tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+			tableLayoutPanel6.Controls.Add(label4, 0, 0);
+			tableLayoutPanel6.Controls.Add(btn_SelectColor, 0, 1);
+			tableLayoutPanel6.Dock = DockStyle.Fill;
+			tableLayoutPanel6.Location = new Point(3, 113);
+			tableLayoutPanel6.Name = "tableLayoutPanel6";
+			tableLayoutPanel6.RowCount = 2;
+			tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+			tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+			tableLayoutPanel6.Size = new Size(501, 74);
+			tableLayoutPanel6.TabIndex = 5;
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Dock = DockStyle.Fill;
+			label4.Location = new Point(3, 0);
+			label4.Name = "label4";
+			label4.Size = new Size(495, 30);
+			label4.TabIndex = 0;
+			label4.Text = "Цвет заметки:";
+			// 
+			// btn_SelectColor
+			// 
+			btn_SelectColor.BackColor = Color.White;
+			btn_SelectColor.Dock = DockStyle.Fill;
+			btn_SelectColor.Location = new Point(3, 33);
+			btn_SelectColor.Name = "btn_SelectColor";
+			btn_SelectColor.Size = new Size(495, 38);
+			btn_SelectColor.TabIndex = 1;
+			btn_SelectColor.Text = "Выбрать цвет";
+			btn_SelectColor.UseVisualStyleBackColor = false;
+			btn_SelectColor.Click += btn_SelectColor_Click;
+			// 
 			// tableLayoutPanel3
 			// 
 			tableLayoutPanel3.ColumnCount = 1;
@@ -143,16 +217,6 @@
 			tableLayoutPanel3.Size = new Size(501, 127);
 			tableLayoutPanel3.TabIndex = 2;
 			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Dock = DockStyle.Fill;
-			label2.Location = new Point(3, 0);
-			label2.Name = "label2";
-			label2.Size = new Size(495, 30);
-			label2.TabIndex = 0;
-			label2.Text = "Краткое описание:";
-			// 
 			// tbx_ShortDescription
 			// 
 			tbx_ShortDescription.Dock = DockStyle.Fill;
@@ -162,6 +226,16 @@
 			tbx_ShortDescription.ScrollBars = ScrollBars.Both;
 			tbx_ShortDescription.Size = new Size(495, 91);
 			tbx_ShortDescription.TabIndex = 1;
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Dock = DockStyle.Fill;
+			label2.Location = new Point(3, 0);
+			label2.Name = "label2";
+			label2.Size = new Size(495, 30);
+			label2.TabIndex = 0;
+			label2.Text = "Краткое описание:";
 			// 
 			// tableLayoutPanel4
 			// 
@@ -243,80 +317,6 @@
 			btn_Cancel.UseVisualStyleBackColor = false;
 			btn_Cancel.Click += btn_Cancel_Click;
 			// 
-			// tableLayoutPanel6
-			// 
-			tableLayoutPanel6.ColumnCount = 1;
-			tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-			tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-			tableLayoutPanel6.Controls.Add(label4, 0, 0);
-			tableLayoutPanel6.Controls.Add(btn_SelectColor, 0, 1);
-			tableLayoutPanel6.Dock = DockStyle.Fill;
-			tableLayoutPanel6.Location = new Point(3, 113);
-			tableLayoutPanel6.Name = "tableLayoutPanel6";
-			tableLayoutPanel6.RowCount = 2;
-			tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-			tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			tableLayoutPanel6.Size = new Size(501, 74);
-			tableLayoutPanel6.TabIndex = 5;
-			// 
-			// tableLayoutPanel7
-			// 
-			tableLayoutPanel7.ColumnCount = 1;
-			tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-			tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-			tableLayoutPanel7.Controls.Add(label5, 0, 0);
-			tableLayoutPanel7.Controls.Add(cmb_MarkType, 0, 1);
-			tableLayoutPanel7.Dock = DockStyle.Fill;
-			tableLayoutPanel7.Location = new Point(3, 193);
-			tableLayoutPanel7.Name = "tableLayoutPanel7";
-			tableLayoutPanel7.RowCount = 2;
-			tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-			tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			tableLayoutPanel7.Size = new Size(501, 64);
-			tableLayoutPanel7.TabIndex = 6;
-			// 
-			// label4
-			// 
-			label4.AutoSize = true;
-			label4.Dock = DockStyle.Fill;
-			label4.Location = new Point(3, 0);
-			label4.Name = "label4";
-			label4.Size = new Size(495, 30);
-			label4.TabIndex = 0;
-			label4.Text = "Цвет заметки:";
-			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Dock = DockStyle.Fill;
-			label5.Location = new Point(3, 0);
-			label5.Name = "label5";
-			label5.Size = new Size(495, 30);
-			label5.TabIndex = 0;
-			label5.Text = "Тип заметки:";
-			// 
-			// btn_SelectColor
-			// 
-			btn_SelectColor.BackColor = Color.White;
-			btn_SelectColor.Dock = DockStyle.Fill;
-			btn_SelectColor.Location = new Point(3, 33);
-			btn_SelectColor.Name = "btn_SelectColor";
-			btn_SelectColor.Size = new Size(495, 38);
-			btn_SelectColor.TabIndex = 1;
-			btn_SelectColor.Text = "Выбрать цвет";
-			btn_SelectColor.UseVisualStyleBackColor = false;
-			btn_SelectColor.Click += btn_SelectColor_Click;
-			// 
-			// cmb_MarkType
-			// 
-			cmb_MarkType.Dock = DockStyle.Fill;
-			cmb_MarkType.DropDownStyle = ComboBoxStyle.DropDownList;
-			cmb_MarkType.FormattingEnabled = true;
-			cmb_MarkType.Location = new Point(3, 33);
-			cmb_MarkType.Name = "cmb_MarkType";
-			cmb_MarkType.Size = new Size(495, 29);
-			cmb_MarkType.TabIndex = 1;
-			// 
 			// EditMarkForm
 			// 
 			AutoScaleDimensions = new SizeF(9F, 21F);
@@ -324,25 +324,26 @@
 			ClientSize = new Size(507, 577);
 			Controls.Add(tableLayoutPanel1);
 			Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			Margin = new Padding(4, 4, 4, 4);
+			Margin = new Padding(4);
 			MaximizeBox = false;
 			MinimizeBox = false;
 			Name = "EditMarkForm";
 			ShowIcon = false;
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Добавить заметку";
 			tableLayoutPanel1.ResumeLayout(false);
 			tableLayoutPanel1.PerformLayout();
+			tableLayoutPanel7.ResumeLayout(false);
+			tableLayoutPanel7.PerformLayout();
 			tableLayoutPanel2.ResumeLayout(false);
 			tableLayoutPanel2.PerformLayout();
+			tableLayoutPanel6.ResumeLayout(false);
+			tableLayoutPanel6.PerformLayout();
 			tableLayoutPanel3.ResumeLayout(false);
 			tableLayoutPanel3.PerformLayout();
 			tableLayoutPanel4.ResumeLayout(false);
 			tableLayoutPanel4.PerformLayout();
 			tableLayoutPanel5.ResumeLayout(false);
-			tableLayoutPanel6.ResumeLayout(false);
-			tableLayoutPanel6.PerformLayout();
-			tableLayoutPanel7.ResumeLayout(false);
-			tableLayoutPanel7.PerformLayout();
 			ResumeLayout(false);
 		}
 

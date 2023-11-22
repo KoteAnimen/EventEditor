@@ -296,11 +296,13 @@
 			listMarks.ContextMenuStrip = cms_EditMarks;
 			listMarks.Dock = DockStyle.Fill;
 			listMarks.Location = new Point(3, 33);
+			listMarks.MultiSelect = false;
 			listMarks.Name = "listMarks";
 			listMarks.Size = new Size(259, 129);
 			listMarks.TabIndex = 1;
 			listMarks.UseCompatibleStateImageBehavior = false;
 			listMarks.View = View.Details;
+			listMarks.SelectedIndexChanged += listMarks_SelectedIndexChanged;
 			// 
 			// columnName
 			// 
