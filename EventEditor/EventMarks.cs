@@ -15,16 +15,26 @@ namespace EventEditor
 	{
 		public static List<Mark> Marks { get; set; } = new List<Mark>();
 
-		public static string FromColor(Color color) => color.ToString();		
+		public static string FromColor(Color color)
+		{
+			string r = color.R.ToString();
+			string g = color.G.ToString();
+			string b = color.B.ToString();
+
+			return r+","+g+","+ b;
+		}	
 
 		public static Color ToColor(string str) 
 		{
-			int a = Convert.ToInt32(new string(str.Split(',')[0].Where(Char.IsDigit).ToArray()));
-			int r = Convert.ToInt32(new string(str.Split(',')[1].Where(Char.IsDigit).ToArray()));
-			int g = Convert.ToInt32(new string(str.Split(',')[2].Where(Char.IsDigit).ToArray()));
-			int b = Convert.ToInt32(new string(str.Split(',')[3].Where(Char.IsDigit).ToArray()));
+			try
+			{
+				int r = Convert.ToInt32((str.Split(',')[0]));
+				int g = Convert.ToInt32((str.Split(',')[1]));
+				int b = Convert.ToInt32((str.Split(',')[2]));
 
-			return Color.FromArgb(a, r, g, b);
+				return Color.FromArgb(r, g, b);
+			}
+			catch {	return Color.FromArgb(0, 0, 0);	}			
 		}
 	}
 
