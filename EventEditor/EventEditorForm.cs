@@ -85,7 +85,11 @@ namespace EventEditor
 				toolStripEventName.Text = mark.Name;
 
 				StartRIO_Button.Enabled = mark.Type == MarkType.FRAME_ROI;
+				return;
 			}
+
+			tbx_EventInfo.Text = "";
+			toolStripEventName.Text = "";
 		}
 
 		private void listMarks_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,6 +136,8 @@ namespace EventEditor
 				{
 					EventMarks.Marks.Remove(_mark);
 					UpdateMarks();
+					_mark = null;
+					EventInfo(_mark);
 				}
 			}
 		}
