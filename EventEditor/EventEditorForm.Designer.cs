@@ -189,14 +189,19 @@
 			panelImage.Name = "panelImage";
 			panelImage.Size = new Size(585, 321);
 			panelImage.TabIndex = 0;
+			panelImage.Scroll += panelImage_Scroll;
 			// 
 			// pictureBox
 			// 
-			pictureBox.Location = new Point(3, 3);
+			pictureBox.Location = new Point(0, 0);
 			pictureBox.Name = "pictureBox";
-			pictureBox.Size = new Size(579, 324);
+			pictureBox.Size = new Size(337, 267);
+			pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
 			pictureBox.TabIndex = 0;
 			pictureBox.TabStop = false;
+			pictureBox.MouseDown += pictureBox_MouseDown;
+			pictureBox.MouseMove += pictureBox_MouseMove;
+			pictureBox.MouseUp += pictureBox_MouseUp;
 			// 
 			// splitContainer3
 			// 
@@ -454,6 +459,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Kvantron: EventEditor";
 			WindowState = FormWindowState.Maximized;
+			SizeChanged += EventEditorForm_SizeChanged;
 			statusStrip.ResumeLayout(false);
 			statusStrip.PerformLayout();
 			toolStrip.ResumeLayout(false);
@@ -468,6 +474,7 @@
 			((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
 			splitContainer2.ResumeLayout(false);
 			panelImage.ResumeLayout(false);
+			panelImage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
 			splitContainer3.Panel1.ResumeLayout(false);
 			splitContainer3.Panel2.ResumeLayout(false);

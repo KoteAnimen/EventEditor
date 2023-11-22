@@ -67,6 +67,8 @@ namespace EventEditor
 						listMarks.Items.Add(new ListViewItem(new string[] { Name, Short, Full }) { BackColor = color });
 					}
 				}
+
+				UpdateImage();
 			}
 		}
 
@@ -159,16 +161,97 @@ namespace EventEditor
 
 		private void StartRIO_Button_Click(object sender, EventArgs e)
 		{
-			if(_mark != null)
+			if (_mark != null)
 			{
 				pen = new Pen(EventMarks.ToColor(_mark.Color), 2) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash };
+				firstPoint = true;
+				secondPoint = false;
 			}
-			
+
 		}
 
 		private void UpdateImage()
 		{
+			//FOR ONE FRAME (It's TEST!!!!!!!!!!)
+			if (_camera != null)
+			{
+				var list = EventMarks.Marks.Where(x => x.CameraInfo == _camera.Name && x.Type == MarkType.FRAME_ROI && x.ROI != null).ToList();
+				if (list != null)
+				{
+					pictureBox.Refresh();
 
+					foreach (var item in list)
+					{
+						Rectangle rect = new Rectangle();
+
+						rect.X = item.ROI.X;
+						rect.Y = item.ROI.Y;
+
+						rect.Width = item.ROI.Width;
+						rect.Height = item.ROI.Height;
+
+						Pen pr = new Pen(EventMarks.ToColor(item.Color), 2) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash };
+
+						pictureBox.CreateGraphics().DrawRectangle(pr, rect);
+					}
+				}
+			}
+		}		
+
+		private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (firstPoint && _mark != null)
+			{
+				_mark.ROI = new Rect_ROI();
+				_mark.ROI.FirstPoint = e.Location;
+				secondPoint = true;
+				firstPoint = false;
+			}
+		}
+
+		private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+		{
+			if (_mark != null && secondPoint == true)
+			{
+				secondPoint = false;
+
+				rect.X = _mark.ROI.X;
+				rect.Y = _mark.ROI.Y;
+
+				rect.Width = _mark.ROI.Width;
+				rect.Height = _mark.ROI.Height;
+
+				UpdateImage();
+			}
+		}
+
+		private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (secondPoint && _mark != null)
+			{
+				Point p = e.Location;
+
+				if (p.X > pictureBox.Width || p.Y > pictureBox.Height)
+				{
+					return;
+				}
+
+				_mark.ROI.SecondPoint = p;
+
+				UpdateImage();
+
+				pictureBox.CreateGraphics().DrawRectangle(pen, _mark.ROI.GetRect());
+			}
+		}
+
+		private void EventEditorForm_SizeChanged(object sender, EventArgs e)
+		{
+			UpdateImage();
+		}
+
+		private void panelImage_Scroll(object sender, ScrollEventArgs e)
+		{
+			UpdateImage();
 		}
 
 		#endregion

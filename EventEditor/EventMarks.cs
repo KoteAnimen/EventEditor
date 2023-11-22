@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics.Contracts;
 
 namespace EventEditor
 {
@@ -57,8 +56,32 @@ namespace EventEditor
 		public int Width { get; set; }
 		public int Height { get; set; }
 
-		public System.Drawing.Point FirstPoint { get; set; }
-		public System.Drawing.Point SecondPoint { get; set; }
+		private System.Drawing.Point firstPoint = new Point();
+		private System.Drawing.Point secondPoint = new Point();
+
+		public System.Drawing.Point FirstPoint
+		{
+			get	{ return firstPoint; }
+			set
+			{
+				X = value.X;
+				Y = value.Y;
+
+				firstPoint = value;
+			}
+		}
+		public System.Drawing.Point SecondPoint
+		{
+			get { return  secondPoint; }
+			set
+			{
+				secondPoint = value;
+
+				Width = Math.Abs(firstPoint.X - secondPoint.X);
+				Height = Math.Abs(firstPoint.Y - secondPoint.Y);
+			}
+		}	
+
 		public System.Drawing.Size SizeImage { get; set; }
 
 		public Rectangle GetRect()
