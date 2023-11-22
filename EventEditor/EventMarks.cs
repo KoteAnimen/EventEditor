@@ -55,6 +55,20 @@ namespace EventEditor
 		public int X { get; set; }
 		public int Y { get; set; }
 		public int Width { get; set; }
-		public int Height { get; set; }		
+		public int Height { get; set; }
+
+		public System.Drawing.Point FirstPoint { get; set; }
+		public System.Drawing.Point SecondPoint { get; set; }
+		public System.Drawing.Size SizeImage { get; set; }
+
+		public Rectangle GetRect()
+		{
+			System.Drawing.Size size = new System.Drawing.Size();
+			size.Width = Width;
+			size.Height = Height;
+			SizeImage = size;
+
+			return new Rectangle(X, Y, SizeImage.Width, SizeImage.Height);
+		}
 	}
 }

@@ -29,12 +29,10 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventEditorForm));
-			statusStrip1 = new StatusStrip();
+			statusStrip = new StatusStrip();
 			toolStripEventName = new ToolStripStatusLabel();
-			toolStrip1 = new ToolStrip();
-			toolStripButton1 = new ToolStripButton();
-			toolStripButton2 = new ToolStripButton();
+			toolStrip = new ToolStrip();
+			StartRIO_Button = new ToolStripButton();
 			splitContainer1 = new SplitContainer();
 			tableLayoutPanel2 = new TableLayoutPanel();
 			splitContainer2 = new SplitContainer();
@@ -56,8 +54,8 @@
 			cms_DeleteMark = new ToolStripMenuItem();
 			tableLayoutPanel1 = new TableLayoutPanel();
 			label1 = new Label();
-			textBox1 = new TextBox();
-			menuStrip1 = new MenuStrip();
+			tbx_EventInfo = new TextBox();
+			menuStrip = new MenuStrip();
 			файлToolStripMenuItem = new ToolStripMenuItem();
 			mi_AddMark = new ToolStripMenuItem();
 			mi_EditMark = new ToolStripMenuItem();
@@ -66,8 +64,8 @@
 			выходToolStripMenuItem = new ToolStripMenuItem();
 			справкаToolStripMenuItem = new ToolStripMenuItem();
 			оПрограммеToolStripMenuItem = new ToolStripMenuItem();
-			statusStrip1.SuspendLayout();
-			toolStrip1.SuspendLayout();
+			statusStrip.SuspendLayout();
+			toolStrip.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
 			splitContainer1.Panel1.SuspendLayout();
 			splitContainer1.Panel2.SuspendLayout();
@@ -87,57 +85,51 @@
 			tableLayoutPanel4.SuspendLayout();
 			cms_EditMarks.SuspendLayout();
 			tableLayoutPanel1.SuspendLayout();
-			menuStrip1.SuspendLayout();
+			menuStrip.SuspendLayout();
 			SuspendLayout();
 			// 
-			// statusStrip1
+			// statusStrip
 			// 
-			statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripEventName });
-			statusStrip1.Location = new Point(0, 558);
-			statusStrip1.Name = "statusStrip1";
-			statusStrip1.Padding = new Padding(1, 0, 18, 0);
-			statusStrip1.Size = new Size(866, 22);
-			statusStrip1.TabIndex = 0;
-			statusStrip1.Text = "statusStrip1";
+			statusStrip.Items.AddRange(new ToolStripItem[] { toolStripEventName });
+			statusStrip.Location = new Point(0, 558);
+			statusStrip.Name = "statusStrip";
+			statusStrip.Padding = new Padding(1, 0, 18, 0);
+			statusStrip.Size = new Size(866, 22);
+			statusStrip.TabIndex = 0;
+			statusStrip.Text = "statusStrip1";
 			// 
 			// toolStripEventName
 			// 
 			toolStripEventName.Name = "toolStripEventName";
-			toolStripEventName.Size = new Size(68, 17);
-			toolStripEventName.Text = "EventName";
+			toolStripEventName.Size = new Size(0, 17);
 			// 
-			// toolStrip1
+			// toolStrip
 			// 
-			toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2 });
-			toolStrip1.Location = new Point(0, 24);
-			toolStrip1.Name = "toolStrip1";
-			toolStrip1.Size = new Size(866, 25);
-			toolStrip1.TabIndex = 1;
-			toolStrip1.Text = "toolStrip1";
+			toolStrip.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			toolStrip.ImageScalingSize = new Size(30, 30);
+			toolStrip.Items.AddRange(new ToolStripItem[] { StartRIO_Button });
+			toolStrip.Location = new Point(0, 24);
+			toolStrip.Name = "toolStrip";
+			toolStrip.Size = new Size(866, 37);
+			toolStrip.TabIndex = 1;
+			toolStrip.Text = "toolStrip1";
 			// 
-			// toolStripButton1
+			// StartRIO_Button
 			// 
-			toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-			toolStripButton1.ImageTransparentColor = Color.Magenta;
-			toolStripButton1.Name = "toolStripButton1";
-			toolStripButton1.Size = new Size(23, 22);
-			toolStripButton1.Text = "toolStripButton1";
-			// 
-			// toolStripButton2
-			// 
-			toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-			toolStripButton2.ImageTransparentColor = Color.Magenta;
-			toolStripButton2.Name = "toolStripButton2";
-			toolStripButton2.Size = new Size(23, 22);
-			toolStripButton2.Text = "toolStripButton2";
+			StartRIO_Button.DisplayStyle = ToolStripItemDisplayStyle.Image;
+			StartRIO_Button.Enabled = false;
+			StartRIO_Button.Image = Properties.Resources.selectTool;
+			StartRIO_Button.ImageTransparentColor = Color.Magenta;
+			StartRIO_Button.Name = "StartRIO_Button";
+			StartRIO_Button.Size = new Size(34, 34);
+			StartRIO_Button.Text = "Выделить область";
+			StartRIO_Button.Click += StartRIO_Button_Click;
 			// 
 			// splitContainer1
 			// 
 			splitContainer1.BorderStyle = BorderStyle.FixedSingle;
 			splitContainer1.Dock = DockStyle.Fill;
-			splitContainer1.Location = new Point(0, 49);
+			splitContainer1.Location = new Point(0, 61);
 			splitContainer1.Margin = new Padding(4);
 			splitContainer1.Name = "splitContainer1";
 			splitContainer1.Orientation = Orientation.Horizontal;
@@ -151,8 +143,8 @@
 			// 
 			splitContainer1.Panel2.Controls.Add(tableLayoutPanel1);
 			splitContainer1.Panel2.RightToLeft = RightToLeft.No;
-			splitContainer1.Size = new Size(866, 509);
-			splitContainer1.SplitterDistance = 380;
+			splitContainer1.Size = new Size(866, 497);
+			splitContainer1.SplitterDistance = 371;
 			splitContainer1.SplitterWidth = 5;
 			splitContainer1.TabIndex = 2;
 			// 
@@ -167,7 +159,7 @@
 			tableLayoutPanel2.RowCount = 2;
 			tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
 			tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-			tableLayoutPanel2.Size = new Size(864, 378);
+			tableLayoutPanel2.Size = new Size(864, 369);
 			tableLayoutPanel2.TabIndex = 0;
 			// 
 			// splitContainer2
@@ -184,7 +176,7 @@
 			// splitContainer2.Panel2
 			// 
 			splitContainer2.Panel2.Controls.Add(splitContainer3);
-			splitContainer2.Size = new Size(858, 332);
+			splitContainer2.Size = new Size(858, 323);
 			splitContainer2.SplitterDistance = 587;
 			splitContainer2.TabIndex = 0;
 			// 
@@ -195,7 +187,7 @@
 			panelImage.Dock = DockStyle.Fill;
 			panelImage.Location = new Point(0, 0);
 			panelImage.Name = "panelImage";
-			panelImage.Size = new Size(585, 330);
+			panelImage.Size = new Size(585, 321);
 			panelImage.TabIndex = 0;
 			// 
 			// pictureBox
@@ -221,8 +213,8 @@
 			// splitContainer3.Panel2
 			// 
 			splitContainer3.Panel2.Controls.Add(tableLayoutPanel4);
-			splitContainer3.Size = new Size(267, 332);
-			splitContainer3.SplitterDistance = 161;
+			splitContainer3.Size = new Size(267, 323);
+			splitContainer3.SplitterDistance = 155;
 			splitContainer3.TabIndex = 0;
 			// 
 			// tableLayoutPanel3
@@ -238,7 +230,7 @@
 			tableLayoutPanel3.RowCount = 2;
 			tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
 			tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			tableLayoutPanel3.Size = new Size(265, 159);
+			tableLayoutPanel3.Size = new Size(265, 153);
 			tableLayoutPanel3.TabIndex = 0;
 			// 
 			// label2
@@ -259,7 +251,7 @@
 			listCamera.ItemHeight = 21;
 			listCamera.Location = new Point(3, 33);
 			listCamera.Name = "listCamera";
-			listCamera.Size = new Size(259, 123);
+			listCamera.Size = new Size(259, 117);
 			listCamera.TabIndex = 1;
 			listCamera.SelectedIndexChanged += listCamera_SelectedIndexChanged;
 			// 
@@ -276,7 +268,7 @@
 			tableLayoutPanel4.RowCount = 2;
 			tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
 			tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			tableLayoutPanel4.Size = new Size(265, 165);
+			tableLayoutPanel4.Size = new Size(265, 162);
 			tableLayoutPanel4.TabIndex = 0;
 			// 
 			// label3
@@ -295,10 +287,11 @@
 			listMarks.Columns.AddRange(new ColumnHeader[] { columnName, columnShortDescription, columnDescription });
 			listMarks.ContextMenuStrip = cms_EditMarks;
 			listMarks.Dock = DockStyle.Fill;
+			listMarks.FullRowSelect = true;
 			listMarks.Location = new Point(3, 33);
 			listMarks.MultiSelect = false;
 			listMarks.Name = "listMarks";
-			listMarks.Size = new Size(259, 129);
+			listMarks.Size = new Size(259, 126);
 			listMarks.TabIndex = 1;
 			listMarks.UseCompatibleStateImageBehavior = false;
 			listMarks.View = View.Details;
@@ -307,6 +300,7 @@
 			// columnName
 			// 
 			columnName.Text = "Имя";
+			columnName.Width = 120;
 			// 
 			// columnShortDescription
 			// 
@@ -349,14 +343,14 @@
 			tableLayoutPanel1.ColumnCount = 1;
 			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 			tableLayoutPanel1.Controls.Add(label1, 0, 0);
-			tableLayoutPanel1.Controls.Add(textBox1, 0, 1);
+			tableLayoutPanel1.Controls.Add(tbx_EventInfo, 0, 1);
 			tableLayoutPanel1.Dock = DockStyle.Fill;
 			tableLayoutPanel1.Location = new Point(0, 0);
 			tableLayoutPanel1.Name = "tableLayoutPanel1";
 			tableLayoutPanel1.RowCount = 2;
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			tableLayoutPanel1.Size = new Size(864, 122);
+			tableLayoutPanel1.Size = new Size(864, 119);
 			tableLayoutPanel1.TabIndex = 0;
 			// 
 			// label1
@@ -370,25 +364,25 @@
 			label1.Text = "Информация:";
 			label1.TextAlign = ContentAlignment.MiddleLeft;
 			// 
-			// textBox1
+			// tbx_EventInfo
 			// 
-			textBox1.Dock = DockStyle.Fill;
-			textBox1.Location = new Point(3, 33);
-			textBox1.Multiline = true;
-			textBox1.Name = "textBox1";
-			textBox1.ReadOnly = true;
-			textBox1.ScrollBars = ScrollBars.Both;
-			textBox1.Size = new Size(858, 86);
-			textBox1.TabIndex = 1;
+			tbx_EventInfo.Dock = DockStyle.Fill;
+			tbx_EventInfo.Location = new Point(3, 33);
+			tbx_EventInfo.Multiline = true;
+			tbx_EventInfo.Name = "tbx_EventInfo";
+			tbx_EventInfo.ReadOnly = true;
+			tbx_EventInfo.ScrollBars = ScrollBars.Both;
+			tbx_EventInfo.Size = new Size(858, 83);
+			tbx_EventInfo.TabIndex = 1;
 			// 
-			// menuStrip1
+			// menuStrip
 			// 
-			menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, справкаToolStripMenuItem });
-			menuStrip1.Location = new Point(0, 0);
-			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(866, 24);
-			menuStrip1.TabIndex = 3;
-			menuStrip1.Text = "menuStrip1";
+			menuStrip.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, справкаToolStripMenuItem });
+			menuStrip.Location = new Point(0, 0);
+			menuStrip.Name = "menuStrip";
+			menuStrip.Size = new Size(866, 24);
+			menuStrip.TabIndex = 3;
+			menuStrip.Text = "menuStrip1";
 			// 
 			// файлToolStripMenuItem
 			// 
@@ -449,21 +443,21 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(866, 580);
 			Controls.Add(splitContainer1);
-			Controls.Add(toolStrip1);
-			Controls.Add(statusStrip1);
-			Controls.Add(menuStrip1);
+			Controls.Add(toolStrip);
+			Controls.Add(statusStrip);
+			Controls.Add(menuStrip);
 			Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			MainMenuStrip = menuStrip1;
+			MainMenuStrip = menuStrip;
 			Margin = new Padding(4);
 			Name = "EventEditorForm";
 			ShowIcon = false;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Kvantron: EventEditor";
 			WindowState = FormWindowState.Maximized;
-			statusStrip1.ResumeLayout(false);
-			statusStrip1.PerformLayout();
-			toolStrip1.ResumeLayout(false);
-			toolStrip1.PerformLayout();
+			statusStrip.ResumeLayout(false);
+			statusStrip.PerformLayout();
+			toolStrip.ResumeLayout(false);
+			toolStrip.PerformLayout();
 			splitContainer1.Panel1.ResumeLayout(false);
 			splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -486,21 +480,21 @@
 			cms_EditMarks.ResumeLayout(false);
 			tableLayoutPanel1.ResumeLayout(false);
 			tableLayoutPanel1.PerformLayout();
-			menuStrip1.ResumeLayout(false);
-			menuStrip1.PerformLayout();
+			menuStrip.ResumeLayout(false);
+			menuStrip.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 
-		private StatusStrip statusStrip1;
-		private ToolStrip toolStrip1;
+		private StatusStrip statusStrip;
+		private ToolStrip toolStrip;
 		private SplitContainer splitContainer1;
 		private TableLayoutPanel tableLayoutPanel1;
 		private Label label1;
-		private TextBox textBox1;
-		private MenuStrip menuStrip1;
+		private TextBox tbx_EventInfo;
+		private MenuStrip menuStrip;
 		private ToolStripMenuItem файлToolStripMenuItem;
 		private ToolStripMenuItem справкаToolStripMenuItem;
 		private ToolStripMenuItem оПрограммеToolStripMenuItem;
@@ -522,8 +516,7 @@
 		private ToolStripMenuItem mi_DeleteMark;
 		private ToolStripMenuItem сохранитьToolStripMenuItem;
 		private ToolStripMenuItem выходToolStripMenuItem;
-		private ToolStripButton toolStripButton1;
-		private ToolStripButton toolStripButton2;
+		private ToolStripButton StartRIO_Button;
 		private Panel panelImage;
 		private PictureBox pictureBox;
 		private ContextMenuStrip cms_EditMarks;

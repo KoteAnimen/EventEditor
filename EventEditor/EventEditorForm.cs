@@ -30,13 +30,20 @@ namespace EventEditor
 			if (selected != -1)
 			{
 				_camera = FakeCameras.Cameras[selected];
+				CameraInfoView(_camera);
 				pictureBox.Image = _camera.Video;
 				UpdateMarks();
 			}
 		}
 
-		#endregion
+		private void CameraInfoView(FakeCamera camera)
+		{
+			tbx_EventInfo.Text = "Камера: " + camera.Name + "\r\n"
+								+ "Заметок: "
+								+ EventMarks.Marks.Where(x => x.CameraInfo == camera.Name || x.Type == MarkType.EVENT).Count();
+		}
 
+		#endregion
 
 		#region Редактирование заметок
 
@@ -57,9 +64,25 @@ namespace EventEditor
 						string Short = item.ShortDescription;
 						string Full = item.Description;
 
-						listMarks.Items.Add(new ListViewItem(new string[] { Name, Short, Full }) { BackColor = color });						
+						listMarks.Items.Add(new ListViewItem(new string[] { Name, Short, Full }) { BackColor = color });
 					}
-				}				
+				}
+			}
+		}
+
+		private void EventInfo(Mark? mark)
+		{
+			if (mark != null)
+			{
+				tbx_EventInfo.Text = "Имя события: " + mark.Name + "\r\n" +
+									 "Краткое описание: " + mark.ShortDescription + "\r\n" +
+									 "Тип: " + mark.Type.ToString() + "\r\n" +
+									 "Камера: " + (mark.Type == MarkType.EVENT ? "All" : mark.CameraInfo) + "\r\n" +
+									 "Кадр: " + (mark.Type == MarkType.EVENT || mark.Type == MarkType.VIDEO ? "-" : mark.FrameID.ToString());
+
+				toolStripEventName.Text = mark.Name;
+
+				StartRIO_Button.Enabled = mark.Type == MarkType.FRAME_ROI;
 			}
 		}
 
@@ -69,6 +92,7 @@ namespace EventEditor
 			{
 				var name = listMarks.SelectedItems[0].SubItems[0].Text;
 				_mark = EventMarks.Marks.FirstOrDefault(x => x.Name == name);
+				EventInfo(_mark);
 			}
 			catch { }
 		}
@@ -107,7 +131,7 @@ namespace EventEditor
 					EventMarks.Marks.Remove(_mark);
 					UpdateMarks();
 				}
-			}			
+			}
 		}
 
 		private void cms_AddMark_Click(object sender, EventArgs e)
@@ -124,6 +148,29 @@ namespace EventEditor
 		{
 			mi_DeleteMark_Click(sender, e);
 		}
-		#endregion		
+		#endregion
+
+		#region ROI Editor
+
+		Pen? pen = null;
+		Rectangle rect = new Rectangle();
+		bool firstPoint = false;
+		bool secondPoint = false;
+
+		private void StartRIO_Button_Click(object sender, EventArgs e)
+		{
+			if(_mark != null)
+			{
+				pen = new Pen(EventMarks.ToColor(_mark.Color), 2) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash };
+			}
+			
+		}
+
+		private void UpdateImage()
+		{
+
+		}
+
+		#endregion
 	}
 }
