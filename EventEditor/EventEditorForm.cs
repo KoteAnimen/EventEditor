@@ -8,7 +8,7 @@ namespace EventEditor
 		public EventEditorForm()
 		{
 			InitializeComponent();
-			UpdateCameras();
+			UpdateCameras();			
 		}
 
 		#region –абота с камерами
@@ -181,6 +181,9 @@ namespace EventEditor
 			//FOR ONE FRAME (It's TEST!!!!!!!!!!)
 			if (_camera != null)
 			{
+				//центруем изображение
+				pictureBox.Location = new Point((panelImage.Width / 2) - (pictureBox.Width / 2), (panelImage.Height / 2) - (pictureBox.Height / 2));
+
 				var list = EventMarks.Marks.Where(x => x.CameraInfo == _camera.Name && x.Type == MarkType.FRAME_ROI && x.ROI != null).ToList();
 				if (list != null)
 				{
@@ -202,7 +205,7 @@ namespace EventEditor
 					}
 				}
 			}
-		}		
+		}
 
 		private void pictureBox_MouseDown(object sender, MouseEventArgs e)
 		{

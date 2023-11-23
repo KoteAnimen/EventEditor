@@ -193,9 +193,10 @@
 			// 
 			// pictureBox
 			// 
+			pictureBox.BackgroundImageLayout = ImageLayout.Center;
 			pictureBox.Location = new Point(0, 0);
 			pictureBox.Name = "pictureBox";
-			pictureBox.Size = new Size(337, 267);
+			pictureBox.Size = new Size(300, 300);
 			pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
 			pictureBox.TabIndex = 0;
 			pictureBox.TabStop = false;
