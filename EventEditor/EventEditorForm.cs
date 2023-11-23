@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace EventEditor
 {
 	public partial class EventEditorForm : Form
@@ -182,7 +184,8 @@ namespace EventEditor
 			if (_camera != null)
 			{
 				//центруем изображение
-				pictureBox.Location = new Point((panelImage.Width / 2) - (pictureBox.Width / 2), (panelImage.Height / 2) - (pictureBox.Height / 2));
+				if (pictureBox.Width <= panelImage.Width && pictureBox.Height <= panelImage.Height)
+					pictureBox.Location = new Point((panelImage.Width / 2) - (pictureBox.Width / 2), (panelImage.Height / 2) - (pictureBox.Height / 2));				
 
 				var list = EventMarks.Marks.Where(x => x.CameraInfo == _camera.Name && x.Type == MarkType.FRAME_ROI && x.ROI != null).ToList();
 				if (list != null)
